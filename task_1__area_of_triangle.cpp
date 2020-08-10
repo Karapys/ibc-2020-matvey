@@ -7,7 +7,7 @@ float x1, y1, x2, y2, x3, y3;
 
 void getInputFromUser() {
   for (int i = 1; i <= NUMBER_OF_POINTS; i++) {
-    // Display the mesage
+    // Display the message
     std::cout << "Enter coordinates of point №" << i << ". Example: -0.1 2: \n";
 
     if (i == 1) std::cin >> x1 >> y1;

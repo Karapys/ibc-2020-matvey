@@ -23,17 +23,17 @@ void checkLastPoint () {
 
 void getInputFromUser() {
   std::cout << "Please, enter coordinates in clockwise or anticlockwise order, otherwise the program will not work :)\n\n";
-  for (int i = 1; i <= NUMBER_OF_POINTS; i++) {
-    // Display the mesage
-    std::cout << "Enter coordinates of point of parallelogram №" << i << ". Example: -0.1 2: \n";
+  for (int point_number = 1; point_number <= NUMBER_OF_POINTS; i++) {
+    // Display the message
+    std::cout << "Enter coordinates of point of parallelogram №" << point_number << ". Example: -0.1 2: \n";
 
-    if (i == 1) std::cin >> x1 >> y1;
-    if (i == 2) std::cin >> x2 >> y2;
-    if (i == 3) {
+    if (point_number == 1) std::cin >> x1 >> y1;
+    if (point_number == 2) std::cin >> x2 >> y2;
+    if (point_number == 3) {
       std::cin >> x3 >> y3;
       checkIfPointsOnSameLine();
     }
-    if (i == 4) {
+    if (point_number == 4) {
       std::cin >> x4 >> y4;
       checkLastPoint();
     }
@@ -56,6 +56,7 @@ bool checkIfPointInParallelogram() {
 
   float xp = px - x2;
   float yp = py - y2;
+
   float distance = xb * yc - yb * xc;
   if (distance != 0) {
       float oned = 1.0 / distance;
@@ -75,21 +76,18 @@ bool ifPointIsOverlapsVertex() {
 }
 
 int main() {
-  std::cout << "Hello! It is a simple program what check if some point lies in parallelogram\n";
+  std::cout << "Hello! It is a simple program what checks if some point lies in parallelogram\n";
   getInputFromUser();
-
-  // debug 
-  //std::cout << x1 << y1 << x2 << y2 << x3 << y3 << x4 << y4 << px << py;
   
   // guard
   if (ifPointIsOverlapsVertex()) {
-    std::cout << "Point overlaps some vertex of parallelogram\n";
+    std::cout << "Point overlaps one of the vertecies of parallelogram\n";
     return 0;
   }
 
   float ifInParallelogram = checkIfPointInParallelogram();
   if (ifInParallelogram) {
-    std::cout << "Point in the parallelogram or on the border\n";
+    std::cout << "Point in the parallelogram or cross the border border\n";
   } else {
     std::cout << "Point not in the parallelogram\n";
   }

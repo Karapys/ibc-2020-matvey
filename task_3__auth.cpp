@@ -31,13 +31,16 @@ int main() {
   for (attempt = 1; attempt <= ATTEMPTS; attempt++) {
     getUserInput();
     if (credentailsMatch()) {
+      // We need this for the last attempt submition to work
       attempt--;
+      // Exit if credentials matches
       break;
     } else {
       std::cout << "Access has restricted. You have " << ATTEMPTS - attempt << " attempts left.\n";
     }
   }
 
+  // guard
   if (attempt >= 3) {
     std::cout << "Goodbye!\n";
     return 0;
